@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'accounts',
     'products',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'cart.contexts.cart_contents'
             ],
         },
     },
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL")) }
+DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")) }
 
 
 # Password validation
